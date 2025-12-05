@@ -50,7 +50,7 @@ app.component('overview', {
   <p class="about-intro">
     We are the ones behind Coral Feast, a team of ITM students who have been working hard to develop this web application as part of our 
     Interactive Application Development course. 
-
+  </p>
 
 <div class="about-wrapper">
   <div class="about-grid">
