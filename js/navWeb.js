@@ -1,4 +1,5 @@
-/**
+app.component('nav-web', {
+  /**
  * NavWeb Component
  *
  * @fileoverview Renders the main navigation bar for the Coral Feast Project, including logo, navigation links, and sign up button.
@@ -9,7 +10,6 @@
  * @example
  * <nav-web></nav-web>
  */
-app.component('nav-web', {
   /**
    * No props required for this component
    */

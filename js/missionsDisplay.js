@@ -1,4 +1,6 @@
-/**
+app.component('missions-display', {
+
+  /**
  * MissionsDisplay Component
  *
  * @fileoverview Renders the missions panel, showing a list of mission cards and allowing users to claim rewards or close the modal.
@@ -14,7 +16,6 @@
  *   @close-modal="handleCloseModal"
  * ></missions-display>
  */
-app.component('missions-display', {
 
   /**
    * Component props - Data received from parent component
