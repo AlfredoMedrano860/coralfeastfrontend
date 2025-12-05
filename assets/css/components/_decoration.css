@@ -1,0 +1,71 @@
+/**
+ * Decoration Layer
+ * Description: Visual decoration elements including background
+ * images and UI ornaments. Handles game background and tile
+ * overlay effects.
+ * Usage:
+ * Depends on: _variables.css, _main.css
+ */
+
+
+@layer decoration {
+
+  /**
+   * Full-screen game background container.
+   * Holds the decorative background image.
+   */
+  .bg-game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+   /**
+   * Background image overlay for the game.
+   * Uses ::after to avoid interfering with content layout.
+   */
+  .bg-game::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../../img/fondoGame.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /**
+   * Base tile container.
+   * Used for elements that require positioned overlays.
+   */
+.tile {
+  position: relative;
+}
+
+
+/**
+   * Evolution timer indicator for fish.
+   * Circular UI element shown on top-right of .tile.
+   */
+.tile-timer {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+ /**
+   * Glowing effect when a fish is ready.
+   */
+.tile-timer.ready {
+  box-shadow: 0 0 8px #4dabff;
+}
+
+}

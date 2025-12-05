@@ -1,0 +1,1073 @@
+/**
+ * Panels
+ * Description: Styles for draggable panels, item panels, market, inventory, pond, missions, overlays, and time indicators.
+ * Includes responsive layouts and keyframes for day/night transitions and panel interactions.
+ * Usage:
+ * Depends on: _variables.css, _main.css
+ * Version: 1.0.0
+ * Namespace: panels
+ */
+@layer panels {
+  /**
+   * Status backgrounds:
+   * - Water tile backgrounds for status panels.
+   */
+  .status0,
+  .status1,
+  .status2,
+  .status3 {
+    background-image: url("../../img/tileWater.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /**
+   * Fish drag panel:
+   * - Panel for dragging fish in UI.
+   */
+  .fish-drag-panel {
+    position: absolute;
+    top: 120px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 500;
+  }
+
+  /**
+   * Drag instruction:
+   * - Instruction text for drag panel.
+   */
+  .drag-instruction {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /**
+   * Draggable fish:
+   * - Fish image for drag-and-drop.
+   */
+  .draggable-fish {
+    width: 70px;
+    height: 70px;
+    cursor: grab;
+  }
+
+  /**
+   * Panel close button:
+   * - Close button for panels.
+   */
+  .panel-close {
+    position: absolute;
+    width: calc(44px * var(--ui-scale));
+    height: calc(44px * var(--ui-scale));
+    top: calc(-22px * var(--ui-scale));
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  /**
+   * Item panel:
+   * - Panel for item details and purchase.
+   */
+  .item-panel {
+    position: absolute;
+    width: calc(264px * var(--ui-scale));
+    height: calc(380px * var(--ui-scale));
+    left: calc(440px * var(--ui-scale));
+    top: calc(160px * var(--ui-scale));
+    background: rgba(7, 37, 55, 0.65);
+    border-radius: calc(18px * var(--ui-scale));
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    z-index: 6;
+    backdrop-filter: blur(2px);
+  }
+
+  /**
+   * Panel buy button:
+   * - Buy button in item panel.
+   */
+  .panel-buy {
+    position: absolute;
+    width: calc(120px * var(--ui-scale));
+    height: auto;
+    left: 50%;
+    bottom: calc(24px * var(--ui-scale));
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  /**
+   * Fish image:
+   * - Image of fish in item panel.
+   */
+  .fish-image {
+    display: block;
+    width: calc(140px * var(--ui-scale));
+    margin: calc(40px * var(--ui-scale)) auto calc(10px * var(--ui-scale)) auto;
+    object-fit: contain;
+  }
+
+  /**
+   * Fish name:
+   * - Name text for fish in item panel.
+   */
+  .fish-name {
+    text-align: center;
+    font-size: calc(24px * var(--ui-scale));
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1px;
+    margin: calc(8px * var(--ui-scale)) 0;
+  }
+
+  /**
+   * Fish price:
+   * - Price display for fish in item panel.
+   */
+  .fish-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(8px * var(--ui-scale));
+    font-weight: 700;
+    color: var(--clr-orange);
+    font-size: calc(20px * var(--ui-scale));
+    margin-bottom: calc(20px * var(--ui-scale));
+  }
+
+  /**
+   * Coin icon:
+   * - Icon for currency in item panel.
+   */
+  .coin-icon {
+    width: calc(28px * var(--ui-scale));
+    height: calc(28px * var(--ui-scale));
+    object-fit: contain;
+  }
+
+  /**
+   * Market stage:
+   * - Main market area background and layout.
+   */
+  .market-stage {
+    grid-row: 2;
+    min-height: 0;
+    min-height: calc(687px * var(--ui-scale));
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 0 calc(12px * var(--ui-scale)) calc(12px * var(--ui-scale));
+    background: var(--clr-darkblue);
+  }
+
+  /**
+   * Market stage background image:
+   * - Overlay image for market stage.
+   */
+  .market-stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../../img/fondoMercado.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: auto 100%;
+  }
+
+  /**
+   * Market stage sidebar background:
+   * - Sidebar background for market stage.
+   */
+  .market-stage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidew);
+    background: var(--clr-darkblue);
+    z-index: 0;
+  }
+
+  /**
+   * Store container:
+   * - Container for store items and images.
+   */
+  .store-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /**
+   * Store image:
+   * - Decorative image in store.
+   */
+  .store-image {
+    position: absolute;
+    right: calc(-55px * var(--ui-scale));
+    top: 50%;
+    transform: translateY(-45%);
+    height: calc(600px * var(--ui-scale));
+    object-fit: contain;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /**
+   * Store item:
+   * - Item image in store.
+   */
+  .store-item {
+    position: absolute;
+    width: calc(80px * var(--ui-scale));
+    z-index: 3;
+    transition: transform 0.2s ease;
+  }
+
+  /**
+   * Store item hover:
+   * - Hover effect for store items.
+   */
+  .store-item:hover {
+    transform: scale(1.1);
+  }
+
+  /**
+   * Market sidebar:
+   * - Sidebar for market navigation.
+   */
+  .market-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--sidew);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  /* cambio de cossas */
+  /**
+   * Inventory sidebar:
+   * - Sidebar for inventory navigation.
+   */
+  .inventory-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidew-i);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: auto;
+    background: transparent;
+  }
+
+  /**
+   * Inventory title:
+   * - Title text for inventory sidebar.
+   */
+  .inventory-title {
+    color: var(--clr-white);
+    font-weight: 700;
+    font-size: calc(28px * var(--ui-scale));
+    letter-spacing: 1px;
+    margin-bottom: calc(25px * var(--ui-scale));
+  }
+
+  /**
+   * Profile section:
+   * - Container for user profile image.
+   */
+  .profile-section {
+    width: calc(140px * var(--ui-scale));
+    height: calc(140px * var(--ui-scale));
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 calc(10px * var(--ui-scale)) hsla(0, 0%, 0%, 0.4);
+    margin-bottom: calc(12px * var(--ui-scale));
+    justify-content: center;
+    justify-items: center;
+  }
+
+  /**
+   * Profile image:
+   * - Image for user profile.
+   */
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /**
+   * Container:
+   * - Generic flex container.
+   */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  /**
+   * Pond wrapper:
+   * - Wrapper for pond area.
+   */
+  .pond-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /**
+   * Pond:
+   * - Main pond area background and layout.
+   */
+  .pond {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    background-image: url("../../img/tileWater.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /**
+   * Quick access bar:
+   * - Bar for quick access slots.
+   */
+  .quick-access-bar {
+    position: absolute;
+    left: -100px;
+    top: 40%;
+    transform: translateY(-55%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    z-index: 5;
+  }
+
+  /**
+   * Quick access slot:
+   * - Slot for quick access items.
+   */
+  .quick-access-slot {
+    width: 50px;
+    height: 50px;
+  }
+
+  /**
+   * Quick access background:
+   * - Background image for quick access slot.
+   */
+  .quick-access-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /**
+   * Missions body:
+   * - Container for missions section.
+   */
+  .missions-bod {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/fondoMercado.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /**
+   * Missions content:
+   * - Content area for missions.
+   */
+  .missions-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /**
+   * Missions title:
+   * - Title bar for missions section.
+   */
+  .missions-title {
+    background-color: var(--clr-darkblue);
+    width: 100%;
+    min-height: 40px;
+    padding: 20px;
+  }
+
+  /**
+   * Mission description:
+   * - Description text for mission.
+   */
+  .mission-description {
+    margin-left: 30px;
+  }
+
+  /**
+   * Missions container:
+   * - Container for mission cards.
+   */
+  .missions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: clamp(260px, 55vh, 420px);
+    width: 100%;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /**
+   * Mission card:
+   * - Main card style for missions.
+   */
+  .mission-card {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 18px;
+    width: 100%;
+    max-width: 680px;
+    border-radius: 12px;
+    padding: 18px 22px;
+    background: linear-gradient(
+      135deg,
+      rgba(12, 42, 63, 0.85),
+      rgba(20, 76, 109, 0.85)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+  }
+
+  /**
+   * Mission card status:
+   * - Status indicator for mission card.
+   */
+  .mission-card__status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    padding: 8px 12px;
+    border-radius: 40px;
+    font-family: "LexendDeca", sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clr-white);
+    background: rgba(255, 255, 255, 0.12);
+    align-self: center;
+  }
+
+  /**
+   * Mission card status new:
+   * - New status style for mission card.
+   */
+  .mission-card__status--new {
+    background: rgba(0, 177, 255, 0.25);
+  }
+
+  /**
+   * Mission card status completed:
+   * - Completed status style for mission card.
+   */
+  .mission-card__status--completed {
+    background: rgba(96, 255, 170, 0.3);
+  }
+
+  /**
+   * Mission card status claimed:
+   * - Claimed status style for mission card.
+   */
+  .mission-card__status--claimed {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  /**
+   * Mission card body:
+   * - Body content for mission card.
+   */
+  .mission-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 12px;
+    color: var(--clr-white);
+  }
+
+  /**
+   * Mission card header:
+   * - Header section for mission card.
+   */
+  .mission-card__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-family: "LexendDeca", sans-serif;
+  }
+
+  /**
+   * Mission card title:
+   * - Title text for mission card.
+   */
+  .mission-card__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  /**
+   * Mission card level:
+   * - Level indicator for mission card.
+   */
+  .mission-card__level {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  /**
+   * Mission card info row:
+   * - Info row for mission card.
+   */
+  .mission-card__info-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-family: "LexendDeca", sans-serif;
+    opacity: 0.9;
+  }
+
+  /**
+   * Mission card progress bar:
+   * - Progress bar for mission completion.
+   */
+  .mission-card__progress-bar {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+  }
+
+  /**
+   * Mission card progress fill:
+   * - Fill for mission progress bar.
+   */
+  .mission-card__progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #00d5ff, #66ffcc);
+    border-radius: inherit;
+    transition: width 0.3s ease;
+  }
+
+  /**
+   * Mission card actions:
+   * - Action buttons for mission card.
+   */
+  .mission-card__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /**
+   * Mission card claim button:
+   * - Claim button for mission rewards.
+   */
+  .mission-card__claim {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-family: "LexendDeca", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--clr-darkblue);
+    background: linear-gradient(135deg, #9bffb5, #5dffdd);
+    box-shadow: 0 8px 18px rgba(93, 255, 221, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /**
+   * Mission card claim hover:
+   * - Hover effect for claim button.
+   */
+  .mission-card__claim:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(93, 255, 221, 0.5);
+  }
+
+  /**
+   * Mission card claim active:
+   * - Active effect for claim button.
+   */
+  .mission-card__claim:active {
+    transform: translateY(0);
+  }
+
+  /**
+   * Mission card reward icon:
+   * - Icon for mission reward.
+   */
+  .mission-card__reward-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    opacity: 0.7;
+  }
+
+  /**
+   * Pond OK container:
+   * - Container for pond confirmation.
+   */
+  .pond-ok-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /**
+   * Pond body:
+   * - Container for pond section.
+   */
+  .pond-bod {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/fondoMercado.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /**
+   * Pond content:
+   * - Content area for pond section.
+   */
+  .pond-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /**
+   * Pond title:
+   * - Title bar for pond section.
+   */
+  .pond-title {
+    background-color: var(--clr-darkblue);
+    width: 100%;
+    min-height: 40px;
+    padding: 20px;
+  }
+
+  /**
+   * Pond container:
+   * - Container for pond cards.
+   */
+  .pond-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: clamp(260px, 55vh, 420px);
+    width: 100%;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /**
+   * Pond card:
+   * - Main card style for pond section.
+   */
+  .pond-card {
+    margin: 0 auto;
+    text-align: left;
+    color: var(--clr-white);
+    font-family: "LexendDeca", sans-serif;
+    width: 100%;
+    max-width: 680px;
+    border-radius: 12px;
+    padding: 18px 22px;
+    background: linear-gradient(
+      135deg,
+      rgba(12, 42, 63, 0.85),
+      rgba(20, 76, 109, 0.85)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+  }
+
+  /**
+   * Pond card text:
+   * - Text color for pond card and children.
+   */
+  .pond-card-text,
+  .pond-card-text * {
+    color: #fff !important;
+  }
+
+  /**
+   * Responsive layout (max-width: 900px):
+   * - Adjusts missions and pond for tablets and small screens.
+   */
+  @media (max-width: 900px) {
+    .missions-content {
+      gap: 20px;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    .missions-container {
+      max-height: clamp(260px, 60vh, 420px);
+      padding: 12px;
+    }
+
+    .mission-card {
+      gap: 14px;
+      padding: 16px 18px;
+      max-width: 100%;
+    }
+
+    .mission-card__status {
+      min-width: 72px;
+      font-size: 0.75rem;
+      padding: 6px 10px;
+    }
+
+    .mission-card__title {
+      font-size: 1rem;
+    }
+
+    .mission-card__level,
+    .mission-card__info-row {
+      font-size: 0.85rem;
+    }
+
+    .mission-card__reward-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  /**
+   * Day/night overlay:
+   * - Overlay for day/night transition effect.
+   */
+  .day-night-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1500;
+    animation: dayNightOverlayFade 3s ease-out forwards;
+  }
+
+  /**
+   * Day overlay:
+   * - Overlay style for day effect.
+   */
+  .day-night-overlay--day {
+    background: rgba(255, 224, 140, 0.35);
+    backdrop-filter: saturate(135%) brightness(1.05);
+    -webkit-backdrop-filter: saturate(135%) brightness(1.05);
+  }
+
+  /**
+   * Night overlay:
+   * - Overlay style for night effect.
+   */
+  .day-night-overlay--night {
+    background: rgba(6, 18, 49, 0.55);
+    backdrop-filter: saturate(160%) brightness(0.75);
+    -webkit-backdrop-filter: saturate(160%) brightness(0.75);
+  }
+
+  /**
+   * Day/night overlay icon:
+   * - Icon for day/night overlay.
+   */
+  .day-night-overlay__icon {
+    width: clamp(120px, 18vw, 220px);
+    animation: dayNightIconLift 3s ease-out forwards;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45));
+  }
+
+  /**
+   * Responsive layout (max-width: 600px):
+   * - Adjusts missions and pond for mobile screens.
+   */
+  @media (max-width: 600px) {
+    .missions-title {
+      padding: 14px;
+      text-align: center;
+    }
+
+    .missions-container {
+      max-height: clamp(240px, 65vh, 380px);
+      padding: 12px 10px;
+    }
+
+    .mission-card {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .mission-card__status {
+      align-self: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .mission-card__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .mission-card__info-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .mission-card__progress-bar {
+      height: 8px;
+    }
+
+    .mission-card__actions {
+      justify-content: flex-start;
+    }
+
+    .mission-card__claim {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .mission-card__reward-icon {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  /**
+   * Background image:
+   * - Background image for panels.
+   */
+  .background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  /**
+   * Pond card text (override):
+   * - Text color override for pond card.
+   */
+  .pond-card-text{
+    color: rgb(255, 255, 255);
+  }
+
+  /**
+   * Plant effect indicator:
+   * - Indicator for plant effects in pond.
+   */
+  .plant-effect-indicator {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /**
+   * Plant effect indicator image:
+   * - Image for plant effect indicator.
+   */
+  .plant-effect-indicator img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px #222);
+  }
+
+  /*TIEMPO DÍA/NOCHE*/
+  /**
+   * Time indicator:
+   * - Indicator for day/night time.
+   */
+  .time-indicator {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 14px;
+    z-index: 1000;
+  }
+
+  /**
+   * Time bar:
+   * - Progress bar for time indicator.
+   */
+  .time-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+
+  /**
+   * Time bar fill:
+   * - Fill for time progress bar.
+   */
+  .time-bar-fill {
+    height: 100%;
+    background: #ffd44b;
+    transition: width 0.4s linear;
+  }
+
+  /* PANEL DE COMPRA DE PEZ */
+  /**
+   * Responsive layout (max-width: 500px):
+   * - Adjusts item panel for mobile screens.
+   */
+  @media (max-width: 500px) {
+    .item-panel {
+      position: absolute;
+      width: calc(250px * var(--ui-scale)) !important;
+      height: calc(380px * var(--ui-scale));
+      left: calc(199px * var(--ui-scale)) !important;
+      top: calc(40px * var(--ui-scale)) !important;
+    }
+  }
+}
+
+/**
+ * Keyframes: dayNightOverlayFade
+ * Description: Fade in/out animation for day/night overlay.
+ */
+@keyframes dayNightOverlayFade {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/**
+ * Keyframes: dayNightIconLift
+ * Description: Lift and fade animation for day/night overlay icon.
+ */
+@keyframes dayNightIconLift {
+  0% {
+    transform: translateY(24px) scale(0.95);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-18px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-36px) scale(0.95);
+    opacity: 0;
+  }
+}

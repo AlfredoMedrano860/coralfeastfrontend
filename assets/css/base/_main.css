@@ -1,0 +1,160 @@
+/**
+* Main
+* Description: Global and foundational styles for the project.
+* Defines base typography, structural resets, image size utilities,
+ * and default styles for body, headings, and links.
+* Usage:
+* Depends on: _variables.css
+*/
+@layer main {
+
+   /**
+   * Global HTML settings:
+   * - Default font
+   * - Line height
+   * - Resets for margin/padding
+   */
+  html {
+    font-family: var(--font-family); 
+    line-height: var(--lh-body);
+   
+    margin: 0;
+      height: 100%;
+  margin: 0;
+  padding: 0;
+  }
+  
+   /**
+   * Anchor reset:
+   * Removes default browser styles.
+ */
+a {
+  all: unset;
+  display: inline;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-family);
+}
+
+ /**
+   * Main heading (H1):
+ */
+h1{
+
+  font-family: var(--font-family); 
+  font-size: var( --fs-xxl);
+
+}
+
+  /**
+   * Keyboard accessibility highlight.
+   */
+  a:focus-visible {
+    color: var(--clr-teal);
+  }
+  /**
+   * Image utilities:
+   *  */
+  img {
+    &[data-size="small"] {
+      width: 25%;
+    }
+
+    &[data-size="medium"] {
+      width: 50%;
+    }
+
+    &[data-size="large"] {
+      width: 75%;
+    }
+
+    &[data-size="xlarge"] {
+      width: 85%;
+    }
+
+    &[data-size="max"] {
+      width: 95%;
+    }
+  }
+
+   /**
+   * Base paragraph styling.
+   */
+  p {
+    font-family: var(--font-family);
+    font-weight: 300;
+  }
+
+    /**
+   * Section title (H2).
+   */
+  h2{
+    font-family: var(--font-family);
+    color: var(--clr-white);
+    font-size: var(--fs-xxl);
+  }
+ /**
+   * Subsection title (H3).
+   */
+  h3{
+    font-family: var(--font-family);
+    color: var(--clr-white);
+    font-size: var(--fs-xl);
+  }
+
+ /**
+   * Body background, layout resets,
+   * and page-level configuration.
+   */
+  body {
+    background-image: linear-gradient(var(--clr-darkteal) 60%,
+    var(--clr-teal));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+      height: 100%;
+  margin: 0;
+  padding: 0;
+  }
+
+ /**
+   * Special page layouts:
+   * Keeps footer at bottom using flexbox.
+   */
+body.page-login,
+body.page-signup,
+body.page-stats {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+ /**
+   * App container:
+   * Expands to fill remaining height.
+   */
+#app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+
+/**  footer */
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: var(--clr-white);
+  margin-top: auto;
+}
+
+}
