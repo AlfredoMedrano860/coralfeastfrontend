@@ -58,7 +58,7 @@ app.component('overview', {
     <div class="about-card about-card--1">
       <div class="about-photo">
     
-        <img src="./assets/img/alfredo.png" alt="Alfredo Medrano" />
+        <img src="./assets/img/alfredo.PNG" alt="Alfredo Medrano" />
       </div>
       <div class="about-content">
         <h3>Alfredo Medrano</h3>
@@ -72,7 +72,7 @@ app.component('overview', {
     <!-- TARJETA PAU -->
     <div class="about-card about-card--2">
       <div class="about-photo">
-        <img src="./assets/img/pau.png" alt="Paula Obando 2" />
+        <img src="./assets/img/pau.PNG" alt="Paula Obando 2" />
       </div>
       <div class="about-content">
         <h3>Paula Obando</h3>  
@@ -87,7 +87,7 @@ app.component('overview', {
     <!-- TARJETA LAURA -->
     <div class="about-card about-card--3">
       <div class="about-photo">
-        <img src="./assets/img/laura.png" alt="Laura Arroyo" />
+        <img src="./assets/img/laura.PNG" alt="Laura Arroyo" />
       </div>
       <div class="about-content">
         <h3>Laura Arroyo</h3>
