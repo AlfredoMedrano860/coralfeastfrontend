@@ -10,7 +10,7 @@
  * // This script is loaded in signUp.html and provides the Vue app context for signup-form and related components.
  * <script src="./js/mainSignup.js"></script>
  */
-const API_SERVER = window.APP_CONFIG?.apiBase ?? 'http://127.0.0.1:8000';
+const API_SERVER = window.APP_CONFIG?.apiBase ?? 'https://coralfeast.onrender.com';
 const SIGNUP_NOTIFICATION_TYPE_PRESETS = {
   default: {
     background: '#1A365D',

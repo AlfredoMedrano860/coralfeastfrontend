@@ -11,8 +11,7 @@
  * // The Vue app is created and mounted below. The `submitForm` method is
  * // called by the login form component to attempt authentication.
  */
-const API_SERVER =
-  window.APP_CONFIG?.apiBase ?? "http://127.0.0.1:8000";
+const API_SERVER = window.APP_CONFIG?.apiBase ?? "https://coralfeast.onrender.com";
 
 /**
  * Predefined notification type color presets that when 

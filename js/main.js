@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-const API_SERVER = window.APP_CONFIG?.apiBase ?? 'http://127.0.0.1:8000';
+const API_SERVER = window.APP_CONFIG?.apiBase ?? 'https://coralfeast.onrender.com';
 const DEFAULT_FISH_HARVEST_REWARD = 50;
 const PLANT_EFFECT_MAX_DURATION_SECONDS = 30;
 
